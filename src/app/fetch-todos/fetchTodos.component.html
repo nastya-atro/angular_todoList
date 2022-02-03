@@ -1,0 +1,8 @@
+<h3>Click to fetch todo from fake server</h3>
+<button (click)="fetchTodoList()">Click</button>
+
+<div *ngIf="todoList.length">
+  <ul *ngFor="let item of todoList">
+    <li>{{item.title}}</li>
+  </ul>
+</div>

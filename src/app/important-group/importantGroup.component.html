@@ -1,0 +1,5 @@
+<div *ngIf="itemGroup && itemGroup.isImportant">
+  <h3>VERY IMPORTANT
+    <button (click)="notify.emit()">Notify</button>
+  </h3>
+</div>

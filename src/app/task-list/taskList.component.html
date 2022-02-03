@@ -1,0 +1,19 @@
+<ul *ngFor="let task of tasks">
+  <li>
+    <div>{{task.name}}</div>
+    <div *ngIf="task.isDone">done</div>
+    <div *ngIf="!task.isDone">not done</div>
+
+    <button (click)="deleteTask(task.id)">Delete task #{{task.id}}</button>
+
+    <div>
+      <button (click)="toggleNoteTask(task)">
+        <b *ngIf="checkExistTaskInNote(task.id)">ADDED IN NOTE</b>
+        <b *ngIf="!checkExistTaskInNote(task.id)">ADD TASK TO NOTE</b>
+        </button>
+    </div>
+  </li>
+</ul>
+
+<button (click)="addTask()">Add new task</button>
+<button (click)="clearAllTasks()">Clear all tasks</button>

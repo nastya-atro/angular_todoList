@@ -1,0 +1,11 @@
+<div *ngIf="listGroup">
+  <div>Group list #<b>{{listGroup.id}}</b></div>
+  Title: <h2>{{listGroup.title}}</h2>
+  <div>{{listGroup.description}}</div>
+
+  <div *ngIf="listGroup.tasks">
+  <task-list [tasks] ='listGroup.tasks'></task-list>
+  </div>
+
+</div>
+

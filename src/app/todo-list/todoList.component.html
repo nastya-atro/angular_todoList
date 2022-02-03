@@ -1,0 +1,26 @@
+<h2>
+  {{title}}
+</h2>
+
+<ul *ngFor="let item of list">
+  <li>
+    <span>{{item.id}}</span>
+    <button (click)="deleteGroupById(item.id)">Delete group</button>
+    <a
+      [title]="item.title"
+      [routerLink]="['/group', item.id]"
+    >
+      <span><h3>{{item.title}}</h3></span>
+    </a>
+    <b>{{item.description}}</b>
+
+    <important-group
+      [itemGroup]="item"
+      (notify)="notifyAboutImportant()"
+    ></important-group>
+
+  </li>
+</ul>
+
+<button (click)="createNewGroup()">Create new list group</button>
+

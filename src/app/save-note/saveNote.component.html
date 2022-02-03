@@ -1,0 +1,10 @@
+<h2>Your Note Here: </h2>
+
+<ul *ngFor="let noteTask of noteTasks">
+  <li>
+    <div>{{noteTask.name}}</div>
+    <button (click)="deleteTaskFromNote(noteTask)">Delete Task from Note</button>
+  </li>
+</ul>
+
+<button (click)="clearNote()">Clear note</button>
