@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {HttpClient} from "@angular/common/http";
+import {FetchDataService} from "../fetchData.service";
 
 
 @Component({
@@ -10,17 +10,12 @@ import {HttpClient} from "@angular/common/http";
 export class FetchTodosComponent {
   todoList: any = [];
 
-  constructor(private http: HttpClient) {
+  constructor(private fetchDataService: FetchDataService) {
   }
 
-  fetchTodoList(){
-    const x = this.http.get('https://jsonplaceholder.typicode.com/todos')
-    console.log(x);
-    return x
-  }
 
   getTodoList(){
-    this.todoList = this.fetchTodoList()
+    this.fetchDataService.fetchTodoList().subscribe((data: any)=>this.todoList = data)
   }
 
 }

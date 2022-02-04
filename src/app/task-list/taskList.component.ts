@@ -1,6 +1,7 @@
 import {Component, Input} from '@angular/core';
 import { Task} from "../todo-list/list";
 import {SaveNoteService} from "../saveNote.service";
+import { FormBuilder } from '@angular/forms';
 
 
 @Component({
@@ -11,9 +12,12 @@ import {SaveNoteService} from "../saveNote.service";
 export class TaskListComponent{
   @Input() tasks: Task[] =[];
 
+  newTaskForm = this.formBuilder.group({
+    name: '',
+  })
 
-
-  constructor(private noteService: SaveNoteService) {
+  constructor(private noteService: SaveNoteService,
+              private formBuilder: FormBuilder) {
   }
 
   toggleNoteTask(task: Task){
@@ -39,9 +43,10 @@ export class TaskListComponent{
   addTask(){
     this.tasks.push({
       id: Math.floor((Math.random()*466)+1),
-      name: 'New task',
+      name: this.newTaskForm.value.name,
       isDone: false,
     })
+    this.newTaskForm.reset()
   }
 
   deleteTask(taskId: number){

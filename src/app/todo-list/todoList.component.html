@@ -2,10 +2,29 @@
   {{title}}
 </h2>
 
+<b>Create new todo list group:</b>
+<form [formGroup]="createNewGroupForm" (ngSubmit)="createNewGroup()">
+
+  <div>
+    <label for="title">
+      Title
+    </label>
+    <input id="title" type="text" formControlName="title">
+  </div>
+
+  <div>
+    <label for="description">
+      Description
+    </label>
+    <input id="description" type="text" formControlName="description">
+  </div>
+
+  <button class="button" type="submit">Create</button>
+</form>
+
+
 <ul *ngFor="let item of list">
   <li>
-    <span>{{item.id}}</span>
-    <button (click)="deleteGroupById(item.id)">Delete group</button>
     <a
       [title]="item.title"
       [routerLink]="['/group', item.id]"
@@ -13,7 +32,7 @@
       <span><h3>{{item.title}}</h3></span>
     </a>
     <b>{{item.description}}</b>
-
+    <button (click)="deleteGroupById(item.id)">Delete group</button>
     <important-group
       [itemGroup]="item"
       (notify)="notifyAboutImportant()"
@@ -22,5 +41,7 @@
   </li>
 </ul>
 
-<button (click)="createNewGroup()">Create new list group</button>
+
+
+
 

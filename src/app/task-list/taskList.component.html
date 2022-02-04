@@ -15,5 +15,20 @@
   </li>
 </ul>
 
-<button (click)="addTask()">Add new task</button>
+<b>Add New Task:</b>
+<form [formGroup]="newTaskForm" (ngSubmit)="addTask()">
+
+  <div>
+    <label for="name">
+      new task title:
+    </label>
+    <input id="name" type="text" formControlName="name">
+  </div>
+
+  <button class="button" type="submit">Add new task
+  </button>
+</form>
+
+
+
 <button (click)="clearAllTasks()">Clear all tasks</button>
